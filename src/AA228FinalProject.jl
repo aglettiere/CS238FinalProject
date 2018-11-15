@@ -31,6 +31,7 @@ export
     RoombaParticleFilter,
     get_goal_xy,
     wrap_to_pi,
+    wall_contact,
     ContinuousRoombaStateSpace,
     DiscreteRoombaStateSpace,
     render

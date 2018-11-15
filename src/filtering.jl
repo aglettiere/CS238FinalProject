@@ -36,9 +36,14 @@ function ParticleFilters.resample(br::BumperResampler, b::WeightedParticleBelief
             @assert w == 0
         end
     end
-    extras = rand(rng, new, br.n-length(new))
-    for p in extras
-        push!(new, p)
+    if isempty(new) # no particles consistent with observations
+        return ParticleCollection(particles(b))
+    end
+    if br.n > length(new)
+        extras = rand(rng, new, br.n-length(new))
+        for p in extras
+            push!(new, p)
+        end
     end
     return ParticleCollection(new)
 end
@@ -84,6 +89,7 @@ function POMDPs.update(up::RoombaParticleFilter, b::ParticleCollection{RoombaSta
     if all_terminal
         return b
     end
+    #println(up.spf.rng)
 
     return resample(up.spf.resample, WeightedParticleBelief{RoombaState}(pm, wm, sum(wm), nothing), up.spf.rng)
 end

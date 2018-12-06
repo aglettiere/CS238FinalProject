@@ -34,6 +34,7 @@ export
     wall_contact,
     legal_translate,
     reward,
+    update,
     contact_wall,
     ContinuousRoombaStateSpace,
     DiscreteRoombaStateSpace,

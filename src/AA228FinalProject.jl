@@ -32,8 +32,9 @@ export
     get_goal_xy,
     wrap_to_pi,
     wall_contact,
+    legal_translate,
     reward,
-
+    contact_wall,
     ContinuousRoombaStateSpace,
     DiscreteRoombaStateSpace,
     render
